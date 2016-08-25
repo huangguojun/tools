@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/work/project/real210_pro/Linux/application/ttytest'
+let g:netrw_dirhist_2='/work/project/xyTea_18_pro/XyTea18/include'
+let g:netrw_dirhist_3='/work/project/opencv/opencv_pro/playavi'
+let g:netrw_dirhist_4='/work/project/vtk/vtk_examples/Chap02'
+let g:netrw_dirhist_5='/work/project/cmake/cmake_pro/t4/build'
+let g:netrw_dirhist_6='/work/project/python/pyside/dialogs'
+let g:netrw_dirhist_7='/work/project/python/pyside'
+let g:netrw_dirhist_8='/work/project/python/pyside/dialogs'
