@@ -17,6 +17,8 @@ set langmenu=zh_CN.UTF-8
 set nocompatible 
 set nocp
 
+set noswapfile      "禁止产生swp文件
+
 if has("syntax")     
 syntax on            "语法高亮    
 endif  
