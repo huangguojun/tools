@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/hgj/Work/Maiago/toolchains/gcc-linaro-arm-linux-gnueabihf-4.9-2014.09_linux'
+let g:netrw_dirhist_2='/home/hgj/Downloads/platform/zingsk/04-ProgrammableLogic_Source/som_trd_143_hdmi_1080p_rgbrelease/sw/sobel_qt1080'
+let g:netrw_dirhist_3='/home/hgj/Downloads/platform/zingsk/04-ProgrammableLogic_Source/som_trd_143_hdmi_1080p_rgbrelease/sw/sobel_qt1080/hw_ctrl'
+let g:netrw_dirhist_4='/home/hgj/Downloads/platform/zingsk/04-ProgrammableLogic_Source/som_trd_143_hdmi_1080p_rgbrelease/sw/sobel_qt1080/hw_ctrl/hwi'
+let g:netrw_dirhist_5='/home/hgj/Downloads/platform/zingsk/04-ProgrammableLogic_Source/som_trd_143_hdmi_1080p_rgbrelease/sw/sobel_qt1080/hw_ctrl'
