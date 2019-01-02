@@ -5,6 +5,8 @@ sudo apt-get install tmux
 sudo apt-get install exuberant-ctags
 sudo apt-get install scdv
 sudo apt-get install ckermit 
-sudo apt-get install zsh 
+sudo apt-get install zsh curl
+
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 
