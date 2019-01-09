@@ -13,5 +13,5 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 cp dict/.* ~ -r
 cp vim/.* ~ -r
 cp tmux/.* ~ -r
-cp ckermit/.* ~ -r
+cp kermit/.* ~ -r
 
