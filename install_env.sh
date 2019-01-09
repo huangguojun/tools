@@ -15,3 +15,4 @@ cp vim/.* ~ -r
 cp tmux/.* ~ -r
 cp kermit/.* ~ -r
 
+git config --global core.editor vim
