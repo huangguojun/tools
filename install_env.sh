@@ -10,9 +10,4 @@ sudo apt-get install zsh curl
 
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-cp dict/.* ~ -r
-cp vim/.* ~ -r
-cp tmux/.* ~ -r
-cp kermit/.* ~ -r
-
 git config --global core.editor vim
