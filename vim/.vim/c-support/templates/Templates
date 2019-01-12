@@ -42,11 +42,9 @@ IncludeFile( 'snippets.template' )
 
 == USE STYLES : C ==
 IncludeFile( 'c.comments.template' )
-== ENDSTYLES ==
 
 == USE STYLES : CPP ==
 IncludeFile( 'cpp.comments.template' )
-== ENDSTYLES ==
 
 § the rest of the templates are the same for the two styles "C" and "Doxygen";
 § you may also group "Doxygen" and "CPP" if you like this better:
@@ -56,7 +54,6 @@ IncludeFile( 'c.statements.template'   )
 IncludeFile( 'c.idioms.template'       )
 IncludeFile( 'c.preprocessor.template' )
 IncludeFile( 'c.cpp.template'          )
-== ENDSTYLES ==
 
 == USE STYLES : CPP ==
 IncludeFile( 'cpp.statements.template'   )
