@@ -49,6 +49,8 @@ set autoindent        " 设置自动对齐(缩进)：即每行的缩进值与上
 set tabstop=4           " 设置制表符(tab键)的宽度   
 set softtabstop=4       " 设置软制表符的宽度
 set shiftwidth=4        " (自动) 缩进使用的4个空格  
+set expandtab           " 用space替代tab的输入
+
 set cindent             " 使用 C/C++ 语言的自动缩进方式   
 set cinoptions={0,1s,t0,n-2,p2s,(03s,=.5s,>1s,=1s,:1s "设置C/C++语言的具体缩进方式    
 "set backspace=2     " 设置退格键可用
