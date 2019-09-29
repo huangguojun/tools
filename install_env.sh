@@ -3,6 +3,7 @@ sudo apt-get install cmake cmake-gui
 sudo apt-get install vim git subversion
 sudo apt-get install tmux 
 sudo apt-get install exuberant-ctags
+sudo apt-get install clang-format
 sudo apt-get install scdv
 sudo ln -s /usr/bin/dict /usr/bin/sdcv
 sudo apt-get install ckermit 
