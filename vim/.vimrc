@@ -48,7 +48,7 @@ set autoindent        " 设置自动对齐(缩进)：即每行的缩进值与上
 "set smartindent        " 智能对齐方式   
 set tabstop=4           " 设置制表符(tab键)的宽度   
 set softtabstop=4       " 设置软制表符的宽度
-set shiftwidth=4        " (自动) 缩进使用的4个空格  
+set shiftwidth=2        " (自动) 缩进使用的4个空格  
 set expandtab           " 用space替代tab的输入
 
 set cindent             " 使用 C/C++ 语言的自动缩进方式   
