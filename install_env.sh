@@ -18,3 +18,5 @@ sudo chsh -s /bin/zsh
 git config --global user.email "guojun.huang@qq.com"     
 git config --global user.name  "guojun.huang" 
 git config --global core.editor vim
+git config --global diff.tool vimdiff
+git config --global difftool.prompt No
