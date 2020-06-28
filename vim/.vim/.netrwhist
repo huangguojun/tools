@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/home/hgj/Work/nvCT/Libs'
-let g:netrw_dirhist_2='/home/hgj/Work/nvCT/Libs/nvImgAcq'
-let g:netrw_dirhist_3='/home/hgj/Work/nvCT/App'
-let g:netrw_dirhist_4='/home/hgj/Work/nvCT/App/nvAcqTest'
