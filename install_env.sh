@@ -6,9 +6,9 @@ sudo apt-get install vim git subversion
 sudo apt-get install tmux 
 sudo apt-get install exuberant-ctags
 sudo apt-get install clang-format
-sudo apt-get install scdv
-sudo ln -s /usr/bin/dict /usr/bin/sdcv
-sudo apt-get install ckermit 
+#sudo apt-get install scdv
+#sudo ln -s /usr/bin/dict /usr/bin/sdcv
+#sudo apt-get install ckermit 
 sudo apt-get install zsh curl
 
 chsh -s /bin/zsh
