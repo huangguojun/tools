@@ -23,32 +23,25 @@ if has("syntax")
 syntax on            "语法高亮    
 endif  
 
-colorscheme desert       " elflord ron peachpuff defaul 设置配色方案，vim自带的配色方案保存在/usr/share/vim/vim72/colors目录下
+colorscheme desert    
+
 " detect file type   
 filetype on   
 filetype plugin on   
-" If using a
-" dark background within the editing area and syntax highlighting    " turn
-" on this option as well 
+
 "set background=dark 
-" Uncomment the following
-" to have Vim jump to the last position when   
-" reopening a file   
+
 if  has("autocmd")  
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 "have Vim load indentation rules and plugins according to the detected filetype      filetype plugin indent on   
 endif   
-" The following are commented out as they cause vim
-" to behave a lot    " differently from regular Vi. They are highly
-" recommended though. 
-"set ignorecase        " 搜索模式里忽略大小写
-"set smartcase         " 如果搜索模式包含大写字符，不使用 'ignorecase' 选项。只有在输入搜索模式并且打开 'ignorecase' 选项时才会使用。   
-set autowrite        " 自动把内容写回文件: 如果文件被修改过，在每个 :next、:rewind、:last、:first、:previous、:stop、:suspend、:tag、:!、:make、CTRL-] 和 CTRL-^命令时进行；用 :buffer、CTRL-O、CTRL-I、'{A-Z0-9} 或 `{A-Z0-9} 命令转到别的文件时亦然。    
-set autoindent        " 设置自动对齐(缩进)：即每行的缩进值与上一行相等；使用 noautoindent 取消设置
-"set smartindent        " 智能对齐方式   
-set tabstop=2           " 设置制表符(tab键)的宽度   
-set softtabstop=2       " 设置软制表符的宽度
-set shiftwidth=2        " (自动) 缩进使用的4个空格  
+
+set autowrite        " 自动把内容写回文件    
+set autoindent        " 设置自动对齐(缩进)：即每行的缩进值与上一行相等；
+set smartindent        " 智能对齐方式   
+set tabstop=4           " 设置制表符(tab键)的宽度   
+set softtabstop=4       " 设置软制表符的宽度
+set shiftwidth=4        " (自动) 缩进使用的4个空格  
 set expandtab           " 用space替代tab的输入
 
 set cindent             " 使用 C/C++ 语言的自动缩进方式   
@@ -85,11 +78,10 @@ set hlsearch
 map <F5> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR> 
 imap <F5> <ESC>:!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>:  TlistUpdate<CR> 
 set tags=tags
-set tags+=./tags "add current directory's generated tags file   
+set tags+=./tags 
 set tags+=/usr/include/tags
 set tags+=/usr/local/include/tags
 set tags+=/usr/include/c++/tags
-"add new tags file(刚刚生成tags的路径，在ctags -R 生成tags文件后，不要将tags移动到别的目录，否则ctrl+］时，会提示找不到源码文件)
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -123,7 +115,7 @@ let Tlist_File_Fold_Auto_Close=1 "非当前文件，函数列表折叠隐藏
 let Tlist_Exit_OnlyWindow=1 "当taglist是最后一个分割窗口时，自动推出vim    "是否一直处理tags.1:处理;0:不处理   
 let Tlist_Process_File_Always=1 "实时更新tags   
 let Tlist_Inc_Winwidth=0
-
+let Tlist_Auto_Open=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "WinManager setting 
@@ -191,7 +183,11 @@ nnoremap <silent> <F12> :A<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "MiniBufExplorer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplMapWindowNavVim=1
+let g:miniBufExplMapWindowNavArrows=1
+let g:miniBufExplMapCTabSwitchBufs=1
+let g:miniBufExplModSelTarget=1
+"let g:miniBufExplorerMoreThanOne=0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CMake 
@@ -208,21 +204,21 @@ let g:C_UseTool_doxygen = 'yes'
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" 在 vim 启动的时候默认开启 NERDTree（autocmd 可以缩写为 au）
-"autocmd VimEnter * NERDTree
-" 按下 F2 调出/隐藏 NERDTree
-"map :silent! NERDTreeToggle
+" 在 vim 启动的时候默认开启 NERDTree
+autocmd VimEnter * NERDTree
+" 按下 F2 调出/隐藏 NERDTraee
+" map :silent! NERDTreeToggle
 " 将 NERDTree 的窗口设置在 vim 窗口的右侧（默认为左侧）
 let NERDTreeWinPos="right"
 " 当打开 NERDTree 窗口时，自动显示 Bookmarks
-"let NERDTreeShowBookmarks=1
+" let NERDTreeShowBookmarks=1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clang_Format
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:clang_format#style_options = {
-               \  "BasedOnStyle" : "LLVM" ,
+               \  "BasedOnStyle" : "WebKit" ,
                \  "PointerAlignment" : "Right",
                \  "IndentWidth" : 4 ,
                \  "MaxEmptyLinesToKeep" : 1 ,
@@ -249,15 +245,21 @@ let g:clang_format#style_options = {
                \  "UseTab": "Never"}
 
 " map to <Leader>cf in C++ code
-"autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-"autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+" autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+" autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 
 " if you install vim-operator-user
-"autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
+" autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 
 " Toggle auto formatting:
-"nmap <Leader>C :ClangFormatAutoToggle<CR>
+" nmap <Leader>C :ClangFormatAutoToggle<CR>
 
 "autocmd FileType c,cpp,objc ClangFormatAutoEnable
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-plug 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call plug#begin()
+"Plug 'glepnir/spaceline.vim'
+call plug#end()
