@@ -1,0 +1,11 @@
+[user]
+	email = guojun.huang@qq.com
+	name = guojun.huang
+[core]
+	editor = vim
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = No
+[url "https://hub.fastgit.org"]
+	insteadOf = https://github.com
