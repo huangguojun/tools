@@ -115,7 +115,7 @@ let Tlist_File_Fold_Auto_Close=1 "非当前文件，函数列表折叠隐藏
 let Tlist_Exit_OnlyWindow=1 "当taglist是最后一个分割窗口时，自动推出vim    "是否一直处理tags.1:处理;0:不处理   
 let Tlist_Process_File_Always=1 "实时更新tags   
 let Tlist_Inc_Winwidth=0
-let Tlist_Auto_Open=1
+let Tlist_Auto_Open=0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "WinManager setting 
@@ -205,7 +205,7 @@ let g:C_UseTool_doxygen = 'yes'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 在 vim 启动的时候默认开启 NERDTree
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
 " 按下 F2 调出/隐藏 NERDTraee
 " map :silent! NERDTreeToggle
 " 将 NERDTree 的窗口设置在 vim 窗口的右侧（默认为左侧）
