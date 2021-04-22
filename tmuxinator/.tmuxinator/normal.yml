@@ -1,0 +1,25 @@
+# ~/.tmuxinator/normal.yml
+
+name: normal
+root: ~/
+
+# Start the personal vimwiki
+# Start htop system monitor
+# Start bash and zsh instances
+
+windows:
+  - wiki:
+      panes:
+        vim ~/vimwiki/index.wiki
+  - Sys-mon:
+      panes:
+        - htop
+  - bash:
+      layout: main-horizontal
+      panes:
+        - bash
+  - zsh:
+      layout: main-vertical
+      panes:
+        - zsh
+
