@@ -1,11 +1,14 @@
 sudo apt-get install make gcc g++ 
 sudo apt-get install qt5-default qttools5-dev 
-sudo apt-get install qtmultimedia5-dev qtscript5-dev 
-sudo apt-get install cmake cmake-curses-gui
+sudo apt-get install qtmultimedia5-dev qtscript5-dev libqt5xmlpatterns5-dev
+sudo apt-get install cmake cmake-curses-gui extra-cmake-modules
 sudo apt-get install vim git subversion
 sudo apt-get install tmux  tmuxinator 
 sudo apt-get install exuberant-ctags
 sudo apt-get install clang-format
+sudo apt-get install nvidia-cuda-dev nvidia-cuda-toolkit
+sudo apt-get install libboost-all-dev
+
 #sudo apt-get install scdv
 #sudo ln -s /usr/bin/dict /usr/bin/sdcv
 #sudo apt-get install ckermit 
