@@ -92,15 +92,21 @@ Plugin 'scrooloose/nerdcommenter' "多行注释，leader键+cc生成, leader+cu�
 Plugin 'kien/ctrlp.vim' "搜索历史打开文件，在命令行模式下按ctrl+p触发
 Plugin 'vim-scripts/grep.vim' "在命令行模式使用grep命令，:Grep
 Plugin 'Lokaltog/vim-easymotion' "快速跳转，按两下leader键和f组合
-Plugin 'vim-scripts/ShowTrailingWhitespace.git' "高亮显示行尾的多余空白字符
+"Plugin 'vim-scripts/ShowTrailingWhitespace.git' "高亮显示行尾的多余空白字符
 Plugin 'vim-scripts/indentpython.vim.git'
 Plugin 'vim-scripts/Solarized.git' "主题方案
 Plugin 'nathanaelkane/vim-indent-guides.git' "缩进对齐显示
 Plugin 'davidhalter/jedi-vim' "python 补全，不依赖于tags,但比较慢，可以使用indexer替换，但不能跳转项目外
+Plugin 'ConradIrwin/vim-bracketed-paste' " 使用bracketed-paste mode，粘贴代码时避免格式化
 Plugin 'vim-scripts/Markdown'
+Plugin 'vim-scripts/cpp.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'ConradIrwin/vim-bracketed-paste' " 使用bracketed-paste mode，粘贴代码时避免格式化
+Plugin 'brgmnn/vim-opencl'
+Plugin 'bfrg/vim-cuda-syntax' 
+Plugin 'tikhomirov/vim-glsl'
+Plugin 'crucerucalin/qml.vim'
+
 call vundle#end()            " required
 
 filetype plugin indent on    " required
