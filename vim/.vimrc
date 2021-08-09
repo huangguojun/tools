@@ -81,39 +81,36 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'https://github.com/peterhoeg/vim-qml.git'
 Plugin 'Lokaltog/vim-powerline' "status 美化
 Plugin 'octol/vim-cpp-enhanced-highlight' "对c++语法高亮增强
 Plugin 'kshenoy/vim-signature' "书签可视化的插件
-Plugin 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines' "书签行高亮
 Plugin 'majutsushi/tagbar' "taglist的增强版，查看标签，依赖于ctags
 Plugin 'scrooloose/nerdcommenter' "多行注释，leader键+cc生成, leader+cu删除注释
-"Plugin 'scrooloose/nerdtree' "文件浏览
-"Plugin 'Valloric/YouCompleteMe' "自动补全
 Plugin 'kien/ctrlp.vim' "搜索历史打开文件，在命令行模式下按ctrl+p触发
 Plugin 'vim-scripts/grep.vim' "在命令行模式使用grep命令，:Grep
 Plugin 'Lokaltog/vim-easymotion' "快速跳转，按两下leader键和f组合
-Plugin 'vim-scripts/ShowTrailingWhitespace.git' "高亮显示行尾的多余空白字符
+"Plugin 'vim-scripts/ShowTrailingWhitespace.git' "高亮显示行尾的多余空白字符
 Plugin 'vim-scripts/indentpython.vim.git'
 Plugin 'vim-scripts/Solarized.git' "主题方案
 Plugin 'nathanaelkane/vim-indent-guides.git' "缩进对齐显示
-"Plugin 'vim-scripts/indexer.tar.gz' "自动生成标签
-"Plugin 'vim-scripts/DfrankUtil' "indexer 依赖
-"Plugin 'vim-scripts/vimprj' "indexer 依赖
 Plugin 'davidhalter/jedi-vim' "python 补全，不依赖于tags,但比较慢，可以使用indexer替换，但不能跳转项目外
+Plugin 'ConradIrwin/vim-bracketed-paste' " 使用bracketed-paste mode，粘贴代码时避免格式化
 Plugin 'vim-scripts/Markdown'
+Plugin 'vim-scripts/cpp.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'ConradIrwin/vim-bracketed-paste' " 使用bracketed-paste mode，粘贴代码时避免格式化
+Plugin 'brgmnn/vim-opencl'
+Plugin 'bfrg/vim-cuda-syntax' 
+Plugin 'tikhomirov/vim-glsl'
+Plugin 'crucerucalin/qml.vim'
+Plugin 'vhdirk/vim-cmake'
+Plugin 'Rykka/riv.vim'  "reStructuredText 
+
 call vundle#end()            " required
+
 filetype plugin indent on    " required
 
 
