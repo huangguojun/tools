@@ -106,6 +106,8 @@ Plugin 'brgmnn/vim-opencl'
 Plugin 'bfrg/vim-cuda-syntax' 
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'crucerucalin/qml.vim'
+Plugin 'vhdirk/vim-cmake'
+Plugin 'Rykka/riv.vim'  "reStructuredText 
 
 call vundle#end()            " required
 
