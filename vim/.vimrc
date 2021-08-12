@@ -83,6 +83,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'preservim/nerdtree'
 Plugin 'https://github.com/peterhoeg/vim-qml.git'
 Plugin 'Lokaltog/vim-powerline' "status 美化
 Plugin 'octol/vim-cpp-enhanced-highlight' "对c++语法高亮增强
@@ -108,13 +109,11 @@ Plugin 'tikhomirov/vim-glsl'
 Plugin 'crucerucalin/qml.vim'
 Plugin 'vhdirk/vim-cmake'
 Plugin 'Rykka/riv.vim'  "reStructuredText 
+"Plugin 'glepnir/spaceline.vim'
 
 call vundle#end()            " required
 
 filetype plugin indent on    " required
-
-
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -249,9 +248,8 @@ let g:C_UseTool_doxygen = 'yes'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " 在 vim 启动的时候默认开启 NERDTree
-" autocmd VimEnter * NERDTree
+ autocmd VimEnter * NERDTree
 " 按下 F2 调出/隐藏 NERDTraee
 " map :silent! NERDTreeToggle
 " 将 NERDTree 的窗口设置在 vim 窗口的右侧（默认为左侧）
@@ -303,9 +301,3 @@ let g:clang_format#style_options = {
 "autocmd FileType c,cpp,objc ClangFormatAutoEnable
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-plug 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call plug#begin()
-"Plug 'glepnir/spaceline.vim'
-call plug#end()
