@@ -258,7 +258,8 @@ let Tlist_Auto_Open=0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Fold setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set foldmethod=syntax " 用语法高亮来定义折叠
+"set foldmethod=syntax " 用语法高亮来定义折叠
+set foldmethod=indent " 通过缩进定义折叠
 set foldlevel=100 " 启动vim时不要自动折叠代码    
 set foldcolumn=5  "设置折叠栏宽度
 
