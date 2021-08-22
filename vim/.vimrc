@@ -30,11 +30,6 @@ filetype plugin on
 
 "set background=dark 
 
-if  has("autocmd")  
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"have Vim load indentation rules and plugins according to the detected filetype      filetype plugin indent on   
-endif   
-
 set autowrite        " 自动把内容写回文件    
 set autoindent        " 设置自动对齐(缩进)：即每行的缩进值与上一行相等；
 set smartindent        " 智能对齐方式   
@@ -73,81 +68,178 @@ if has("autocmd")
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Vundle setting
+"vim-plug setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible              " be iMproved, required
-filetype off                  " required
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-fugitive'
+Plug 'preservim/nerdtree'
+Plug 'peterhoeg/vim-qml'
+Plug 'Lokaltog/vim-powerline' "status 美化
+Plug 'octol/vim-cpp-enhanced-highlight' "对c++语法高亮增强
+Plug 'kshenoy/vim-signature' "书签可视化的插件
+Plug 'majutsushi/tagbar' "taglist的增强版，查看标签，依赖于ctags
+Plug 'scrooloose/nerdcommenter' "多行注释，leader键+cc生成, leader+cu删除注释
+Plug 'kien/ctrlp.vim' "搜索历史打开文件，在命令行模式下按ctrl+p触发
+Plug 'vim-scripts/grep.vim' "在命令行模式使用grep命令，:Grep
+Plug 'Lokaltog/vim-easymotion' "快速跳转，按两下leader键和f组合
+"Plug 'vim-scripts/ShowTrailingWhitespace.git' "高亮显示行尾的多余空白字符
+Plug 'vim-scripts/indentpython.vim'
+Plug 'vim-scripts/Solarized' "主题方案
+Plug 'nathanaelkane/vim-indent-guides' "缩进对齐显示
+Plug 'davidhalter/jedi-vim' "python 补全，不依赖于tags,但比较慢，可以使用indexer替换，但不能跳转项目外
+Plug 'ConradIrwin/vim-bracketed-paste' " 使用bracketed-paste mode，粘贴代码时避免格式化
+Plug 'vim-scripts/Markdown'
+Plug 'vim-scripts/cpp.vim'
+Plug 'tpope/vim-surround'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'brgmnn/vim-opencl'
+Plug 'bfrg/vim-cuda-syntax' 
+Plug 'tikhomirov/vim-glsl'
+Plug 'crucerucalin/qml.vim'
+Plug 'vhdirk/vim-cmake'
+Plug 'Rykka/riv.vim'  "reStructuredText 
+"Plug 'glepnir/spaceline.vim'
+Plug 'Yggdroot/indentLine'
+Plug 'scrooloose/nerdcommenter'
+Plug 'jlanzarotta/bufexplorer'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
+Plug 'crusoexia/vim-monokai'
+Plug 'luochen1990/rainbow'
+Plug 'itchyny/lightline.vim'
+Plug 'ludovicchabant/vim-gutentags' 
+Plug 'mhinz/vim-signify'
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'preservim/nerdtree'
-Plugin 'https://github.com/peterhoeg/vim-qml.git'
-Plugin 'Lokaltog/vim-powerline' "status 美化
-Plugin 'octol/vim-cpp-enhanced-highlight' "对c++语法高亮增强
-Plugin 'kshenoy/vim-signature' "书签可视化的插件
-Plugin 'majutsushi/tagbar' "taglist的增强版，查看标签，依赖于ctags
-Plugin 'scrooloose/nerdcommenter' "多行注释，leader键+cc生成, leader+cu删除注释
-Plugin 'kien/ctrlp.vim' "搜索历史打开文件，在命令行模式下按ctrl+p触发
-Plugin 'vim-scripts/grep.vim' "在命令行模式使用grep命令，:Grep
-Plugin 'Lokaltog/vim-easymotion' "快速跳转，按两下leader键和f组合
-"Plugin 'vim-scripts/ShowTrailingWhitespace.git' "高亮显示行尾的多余空白字符
-Plugin 'vim-scripts/indentpython.vim.git'
-Plugin 'vim-scripts/Solarized.git' "主题方案
-Plugin 'nathanaelkane/vim-indent-guides.git' "缩进对齐显示
-Plugin 'davidhalter/jedi-vim' "python 补全，不依赖于tags,但比较慢，可以使用indexer替换，但不能跳转项目外
-Plugin 'ConradIrwin/vim-bracketed-paste' " 使用bracketed-paste mode，粘贴代码时避免格式化
-Plugin 'vim-scripts/Markdown'
-Plugin 'vim-scripts/cpp.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'brgmnn/vim-opencl'
-Plugin 'bfrg/vim-cuda-syntax' 
-Plugin 'tikhomirov/vim-glsl'
-Plugin 'crucerucalin/qml.vim'
-Plugin 'vhdirk/vim-cmake'
-Plugin 'Rykka/riv.vim'  "reStructuredText 
-"Plugin 'glepnir/spaceline.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'ajh17/vimcompletesme'
 
-call vundle#end()            " required
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+"Plug 'Shougo/neocomplcache.vim' 
+Plug 'skywind3000/asyncrun.vim'
+Plug  'Shougo/echodoc.vim' 
+Plug 'Yggdroot/LeaderF'
 
-filetype plugin indent on    " required
+call plug#end()
+
+
+source ~/.vim/setup/keymap.vim
+source ~/.vim/setup/asyncrun.vim
+source ~/.vim/setup/leaderf.vim
+"source ~/.vim/setup/coc-nvim.vim
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"vim-gutentags setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
+
+" 所生成的数据文件的名称 "
+let g:gutentags_ctags_tagfile = '.tags'
+
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录 "
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+" 检测 ~/.cache/tags 不存在就新建 "
+if !isdirectory(s:vim_tags)
+    silent! call mkdir(s:vim_tags, 'p')
+endif
+
+" 配置 ctags 的参数 "
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"ALE setting
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_linters_explicit = 1
+let g:ale_completion_delay = 500
+let g:ale_echo_delay = 20
+let g:ale_lint_delay = 500
+let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:airline#extensions#ale#enabled = 1
+
+let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
+let g:ale_c_cppcheck_options = ''
+let g:ale_cpp_cppcheck_options = ''
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Deoplete setting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:deoplete#enable_at_startup = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Neocomplcache setting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:neocomplcache_enable_at_startup = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Echodoc setting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set noshowmode
+let g:echodoc_enable_at_startup = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"YCM setting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+"let g:ycm_add_preview_to_completeopt = 0
+"let g:ycm_show_diagnostics_ui = 0
+"let g:ycm_server_log_level = 'info'
+"let g:ycm_min_num_identifier_candidate_chars = 2
+"let g:ycm_collect_identifiers_from_comments_and_strings = 1
+"let g:ycm_complete_in_strings=1
+"let g:ycm_key_invoke_completion = '<c-z>'
+"set completeopt=menu,menuone
+
+"noremap <c-z> <NOP>
+
+"let g:ycm_semantic_triggers =  {
+"    \ 'c,cpp,python,java,go,erlang,perl,qml': ['re!\w{2}'],
+"    \ 'cs,lua,javascript': ['re!\w{2}'],
+"    \ }
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "ctags setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 按下F5重新生成tag文件，并更新taglist 
-map <F5> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR> 
-imap <F5> <ESC>:!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>:  TlistUpdate<CR> 
-set tags=tags
-set tags+=./tags 
-set tags+=/usr/include/tags
-set tags+=/usr/local/include/tags
-set tags+=/usr/include/c++/tags
-set tags+=tags.vendor
+" map <F5> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR> 
+" imap <F5> <ESC>:!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>:  TlistUpdate<CR> 
+" set tags=tags
+" set tags+=./tags 
+" set tags+=/usr/include/tags
+" set tags+=/usr/local/include/tags
+" set tags+=/usr/include/c++/tags
+" set tags+=tags.vendor
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"omnicppcomplete setting 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "按下F3自动补全代码，注意该映射语句后不能有其他字符，包括tab；
 "否则按下F3会自动补全一些乱码
-imap <F3> <C-X><C-O>    " 按下F2根据头文件内关键字补全 
-imap <F2> <C-X><C-I>    
-set completeopt=menu,menuone " 关掉智能补全时的预览窗口
-let OmniCpp_MayCompleteDot = 1 " autocomplete with . 
-let OmniCpp_MayCompleteArrow = 1 " autocomplete with -> 
-let OmniCpp_MayCompleteScope = 1 " autocomplete with ::  
-let OmniCpp_SelectFirstItem = 2  " select first item (but don't insert)    
-let OmniCpp_NamespaceSearch = 2 " search namespaces in this and included files 
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype in popup window  
-let OmniCpp_GlobalScopeSearch=1 " enable the global scope search   
-let OmniCpp_DisplayMode=1 " Class scope completion mode: always show all members    
-let OmniCpp_DefaultNamespaces=["std"] 
-let OmniCpp_ShowScopeInAbbr=1 " show scope in abbreviation and remove the last column  
-let OmniCpp_ShowAccess=1 
+"imap <F3> <C-X><C-O>    
+" 按下F2根据头文件内关键字补全 
+"imap <F2> <C-X><C-I>    
+"set completeopt=menu,menuone " 关掉智能补全时的预览窗口
+"let OmniCpp_MayCompleteDot = 1 " autocomplete with . 
+"let OmniCpp_MayCompleteArrow = 1 " autocomplete with -> 
+"let OmniCpp_MayCompleteScope = 1 " autocomplete with ::  
+"let OmniCpp_SelectFirstItem = 2  " select first item (but don't insert)    
+"let OmniCpp_NamespaceSearch = 2 " search namespaces in this and included files 
+"let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype in popup window  
+"let OmniCpp_GlobalScopeSearch=1 " enable the global scope search   
+"let OmniCpp_DisplayMode=1 " Class scope completion mode: always show all members    
+"let OmniCpp_DefaultNamespaces=["std"] 
+"let OmniCpp_ShowScopeInAbbr=1 " show scope in abbreviation and remove the last column  
+"let OmniCpp_ShowAccess=1 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -162,13 +254,6 @@ let Tlist_Process_File_Always=1 "实时更新tags
 let Tlist_Inc_Winwidth=0
 let Tlist_Auto_Open=0
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"WinManager setting 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:winManagerWindowLayout='FileExplorer|TagList'  "设置我们要管理的插件    
-let g:persistentBehaviour=0 "如果所有编辑文件都关闭了，退出vim  
-nmap wm :WMToggle<cr> 
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Fold setting
@@ -181,12 +266,10 @@ set foldcolumn=5  "设置折叠栏宽度
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "QuickFix setting 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 按下F6，执行make clean
-map <F6> :make clean<CR><CR><CR>   
-"按下F7，执行make编译程序，并打开quickfix窗口，显示编译信息    
-"map <F7> :make<CR><CR><CR> 
-"map <F7> :make<CR><CR><CR> :copen<CR><CR>  
-map <F7> :make<CR><CR><CR> :cc<CR><CR>  
+" 按下F5，执行make 
+map <f5> :wa<CR>:AsyncRun make -C build -j8 <CR>
+" 按下F6，执行make clean 
+map <F6> :wa<CR>:AsyncRun make clean -C build -j8 <CR>
 "按下F8，光标移到上一个错误所在的行   
 map <F8> :cp<CR>    
 "按下F9，光标移到下一个错误所在的行  
@@ -218,10 +301,8 @@ if has("cscope")
 		nmap <C-@>d :cs find d  <C-R>=expand("<cword>")<CR><CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"添加man窗口
+" *.cpp/*.h 快速切换
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:source $VIMRUNTIME/ftplugin/man.vim
-"c/h 快速切换
 nnoremap <silent> <F12> :A<CR>
 
 
@@ -249,7 +330,7 @@ let g:C_UseTool_doxygen = 'yes'
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 在 vim 启动的时候默认开启 NERDTree
- autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
 " 按下 F2 调出/隐藏 NERDTraee
 " map :silent! NERDTreeToggle
 " 将 NERDTree 的窗口设置在 vim 窗口的右侧（默认为左侧）
