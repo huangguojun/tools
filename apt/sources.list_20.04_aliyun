@@ -1,7 +1,7 @@
 # deb cdrom:[Ubuntu-Kylin 20.04.1 LTS _Focal Fossa_ - Release amd64 (20200731)]/ bionic main restricted
 
 # deb cdrom:[Ubuntu-Kylin 20.04.1 LTS _Focal Fossa_ - Release amd64 (20200731)]/ focal main multiverse restricted universe
-deb-src http://archive.ubuntu.com/ubuntu focal main multiverse restricted universe #Added by software-properties
+# deb-src http://archive.ubuntu.com/ubuntu focal main multiverse restricted universe #Added by software-properties
 
 # See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to
 # newer versions of the distribution.
