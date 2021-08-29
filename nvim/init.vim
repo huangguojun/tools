@@ -1,65 +1,170 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"        _   _       _                  _____             __ _               "
-"       | \ | |     (_)                / ____|           / _(_)              "
-"       |  \| |_   ___ _ __ ___       | |     ___  _ __ | |_ _  __ _         "
-"       | . ` \ \ / / | '_ ` _ \      | |    / _ \| '_ \|  _| |/ _` |        "
-"       | |\  |\ V /| | | | | | |     | |___| (_) | | | | | | | (_| |        "
-"       |_| \_| \_/ |_|_| |_| |_|      \_____\___/|_| |_|_| |_|\__, |        "
-"                                                               __/ |        "
-"                                                              |___/         "
-"                                                                            "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" The above ASCII art is generated using service provided in this webpage:
-" https://www.kammerl.de/ascii/AsciiSignature.php.
+"=============================================================================
+" init.vim --- Entry file for neovim
+"=============================================================================
 
-"{ Header and Licence
-"{{ header info
-" Description: This is my personal Nvim configuration supporting Mac, Linux
-" and Windows, with various plugins configured. This configuration evolves as
-" I learn more about Nvim and becomes more proficient in using Nvim. Since it
-" is very long (more than 1000 lines!), you should read it carefully and take
-" only the settings and options that suits you. I would not recommend cloning
-" this repo and replace your own config. Good configurations are personal,
-" built over time with a lot of polish.
-" Author: Jie-dong Hao
-" Email: jdhao@hotmail.com
-"}}
+set nu
+set tabstop=4           " 设置制表符(tab键)的宽度   
+set softtabstop=4       " 设置软制表符的宽度
+set shiftwidth=4        " 缩进使用的4个空格  
+set expandtab           " 用space替代tab的输入
+set nocompatible        " 不要使用vi的键盘模式，而是vim自己的
+set syntax=on           " 语法高亮
+set noeb                " 去掉输入错误的提示声音
+set confirm             " 在处理未保存或只读文件的时候，弹出确认
+set autoindent          " 自动缩进
+set cindent
+set noswapfile          "禁止产生swp文件
 
-"{{ License: MIT License
-"
-" Copyright (c) 2018-2021 Jie-dong Hao
-"
-" Permission is hereby granted, free of charge, to any person obtaining a copy
-" of this software and associated documentation files (the "Software"), to
-" deal in the Software without restriction, including without limitation the
-" rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-" sell copies of the Software, and to permit persons to whom the Software is
-" furnished to do so, subject to the following conditions:
-"
-" The above copyright notice and this permission notice shall be included in
-" all copies or substantial portions of the Software.
-"
-" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-" IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-" FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-" AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-" LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-" FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-" IN THE SOFTWARE.
-"}}
-"}
+call plug#begin('~/.vim/plugged')               
+Plug 'ervandew/supertab'
+Plug 'vim-scripts/minibufexpl.vim' 
+Plug 'vim-scripts/taglist.vim' 
+Plug 'vim-scripts/a.vim' 
+Plug 'majutsushi/tagbar' "taglist的增强版，查看标签，依赖于ctags
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'crusoexia/vim-monokai'
+Plug 'preservim/nerdtree'
+Plug 'peterhoeg/vim-qml'
+Plug 'octol/vim-cpp-enhanced-highlight' "对c++语法高亮增强
+Plug 'brgmnn/vim-opencl'
+Plug 'bfrg/vim-cuda-syntax' 
+Plug 'tikhomirov/vim-glsl'
+Plug 'crucerucalin/qml.vim'
+Plug 'vhdirk/vim-cmake'
+Plug 'Rykka/riv.vim'        "reStructuredText 
+Plug 'ludovicchabant/vim-gutentags' 
+Plug 'mhinz/vim-signify'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'Shougo/echodoc.vim' 
+Plug 'Yggdroot/LeaderF'
+call plug#end()
 
-"{ Main configurations
-let g:config_file_list = ['globals.vim',
-  \ 'options.vim',
-  \ 'autocommands.vim',
-  \ 'mappings.vim',
-  \ 'plugins.vim',
-  \ 'ui.vim'
-  \ ]
 
-let g:nvim_config_root = expand('<sfile>:p:h')
-for s:fname in g:config_file_list
-  execute printf('source %s/core/%s', g:nvim_config_root, s:fname)
-endfor
-"}
+"=============================================================================
+" vim-monokai setting
+"=============================================================================
+colo monokai
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"vim-gutentags setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
+" 所生成的数据文件的名称 "
+let g:gutentags_ctags_tagfile = '.tags'
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录 "
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+" 检测 ~/.cache/tags 不存在就新建 "
+if !isdirectory(s:vim_tags)
+    silent! call mkdir(s:vim_tags, 'p')
+endif
+" 配置 ctags 的参数 "
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Taglist setting 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let Tlist_Ctags_Cmd='ctags'   "因为我们放在环境变量里，所以可以直接执行    
+let Tlist_Use_Right_Window=0  "让窗口显示在右边，0的话就是显示在左边 
+let Tlist_Show_One_File=0     "让taglist可以同时展示多个文件的函数列表
+let Tlist_File_Fold_Auto_Close=1 "非当前文件，函数列表折叠隐藏  
+let Tlist_Exit_OnlyWindow=1 "当taglist是最后一个分割窗口时，自动推出vim    "是否一直处理tags.1:处理;0:不处理   
+let Tlist_Process_File_Always=1 "实时更新tags   
+let Tlist_Inc_Winwidth=0
+let Tlist_Auto_Open=0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tagbar setting 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tagbar_left = 1
+let g:tagbar_width = max([25, winwidth(0) / 6])
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Fold setting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"set foldmethod=syntax " 用语法高亮来定义折叠
+set foldmethod=indent " 通过缩进定义折叠
+set foldlevel=100 " 启动vim时不要自动折叠代码    
+set foldcolumn=5  "设置折叠栏宽度
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"QuickFix setting 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 按下F5，执行make 
+map <f5> :wa<CR>:AsyncRun make -C build -j8 <CR>
+" 按下F6，执行make clean 
+map <F6> :wa<CR>:AsyncRun make clean -C build -j8 <CR>
+"按下F8，光标移到上一个错误所在的行   
+map <F8> :cp<CR>    
+"按下F9，光标移到下一个错误所在的行  
+map <F9> :cn<CR>    
+"以上的映射是使上面的快捷键在插入模式下也能用  
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"signify setting 修改比较
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set signcolumn=no
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"LeaderF setting 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:Lf_ShortcutF = '<c-p>'
+let g:Lf_ShortcutB = '<m-n>'
+noremap <c-n> :LeaderfMru<cr>
+noremap <m-p> :LeaderfFunction!<cr>
+noremap <m-n> :LeaderfBuffer<cr>
+noremap <m-m> :LeaderfTag<cr>
+let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
+let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
+let g:Lf_WorkingDirectoryMode = 'Ac'
+let g:Lf_WindowHeight = 0.30
+let g:Lf_CacheDirectory = expand('~/.vim/cache')
+let g:Lf_ShowRelativePath = 0
+let g:Lf_HideHelp = 1
+let g:Lf_StlColorscheme = 'powerline'
+let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" *.cpp/*.h 快速切换
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <F12> :A<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"MiniBufExplorer
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:miniBufExplMapWindowNavVim=1
+let g:miniBufExplMapWindowNavArrows=1
+let g:miniBufExplMapCTabSwitchBufs=1
+let g:miniBufExplModSelTarget=1
+"let g:miniBufExplorerMoreThanOne=0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CMake 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:C_UseTool_cmake = 'yes '
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Doxygen 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:C_UseTool_doxygen = 'yes' 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 在 vim 启动的时候默认开启 NERDTree
+" autocmd VimEnter * NERDTree
+" 按下 F2 调出/隐藏 NERDTraee
+" map :silent! NERDTreeToggle
+" 将 NERDTree 的窗口设置在 vim 窗口的右侧（默认为左侧）
+let NERDTreeWinPos="right"
+" 当打开 NERDTree 窗口时，自动显示 Bookmarks
+" let NERDTreeShowBookmarks=1
