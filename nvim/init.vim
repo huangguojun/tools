@@ -16,7 +16,7 @@ set cindent
 set noswapfile          "禁止产生swp文件
 
 call plug#begin('~/.vim/plugged')               
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 Plug 'vim-scripts/minibufexpl.vim' 
 Plug 'vim-scripts/taglist.vim' 
 Plug 'vim-scripts/a.vim' 
@@ -39,6 +39,10 @@ Plug 'Shougo/echodoc.vim'
 Plug 'Yggdroot/LeaderF'
 call plug#end()
 
+source ~/.vim/setup/keymap.vim
+source ~/.vim/setup/asyncrun.vim
+source ~/.vim/setup/leaderf.vim
+source ~/.vim/setup/coc-nvim.vim
 
 "=============================================================================
 " vim-monokai setting
@@ -82,6 +86,11 @@ let Tlist_Auto_Open=0
 let g:tagbar_left = 1
 let g:tagbar_width = max([25, winwidth(0) / 6])
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"signify setting 修改比较
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set signcolumn=no
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Fold setting
@@ -89,7 +98,7 @@ let g:tagbar_width = max([25, winwidth(0) / 6])
 "set foldmethod=syntax " 用语法高亮来定义折叠
 set foldmethod=indent " 通过缩进定义折叠
 set foldlevel=100 " 启动vim时不要自动折叠代码    
-set foldcolumn=5  "设置折叠栏宽度
+set foldcolumn=3  "设置折叠栏宽度
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -160,11 +169,5 @@ let g:C_UseTool_doxygen = 'yes'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 在 vim 启动的时候默认开启 NERDTree
 " autocmd VimEnter * NERDTree
-" 按下 F2 调出/隐藏 NERDTraee
-" map :silent! NERDTreeToggle
-" 将 NERDTree 的窗口设置在 vim 窗口的右侧（默认为左侧）
 let NERDTreeWinPos="right"
-" 当打开 NERDTree 窗口时，自动显示 Bookmarks
-" let NERDTreeShowBookmarks=1

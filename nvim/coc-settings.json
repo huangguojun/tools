@@ -38,44 +38,15 @@
   "coc.source.around.firstMatch": false,
   "coc.source.file.ignoreHidden": false,
 
-  "clangd.disableDiagnostics": true,
+  "clangd.disableDiagnostics": false,
   "diagnostic-languageserver.debug": false,
   "diagnostic.virtualText": false,
-  "diagnostic.checkCurrentLine": false,
+  "diagnostic.checkCurrentLine": true,
 
   "signature.target": "echo",
   "suggest.timeout": 5000,
   "suggest.asciiCharactersOnly": true,
 
   "languageserver": {
-    "vimls": {
-      "module": "/usr/lib/node_modules/vim-language-server/bin/index.js",
-      "args": ["--node-ipc"],
-      "initializationOptions": {
-        "isNeovim": true,
-        "iskeyword": "@,48-57,_,192-255,-#",
-        "vimruntime": "",
-        "runtimepath": "",
-        "diagnostic": {
-          "enable": true
-        },
-        "indexes": {
-          "runtimepath": true,
-          "gap": 100,
-          "count": 3,
-          "projectRootPatterns": [
-            "strange-root-pattern",
-            ".git",
-            "autoload",
-            "plugin"
-          ]
-        },
-        "suggest": {
-          "fromVimruntime": true,
-          "fromRuntimepath": false
-        }
-      },
-      "filetypes": ["vim"]
-    }
   }
 }
