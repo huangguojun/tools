@@ -38,7 +38,7 @@
   "coc.source.around.firstMatch": false,
   "coc.source.file.ignoreHidden": false,
 
-  "clangd.disableDiagnostics": false,
+  "clangd.disableDiagnostics": true,
   "diagnostic-languageserver.debug": false,
   "diagnostic.virtualText": false,
   "diagnostic.checkCurrentLine": true,
@@ -48,5 +48,32 @@
   "suggest.asciiCharactersOnly": true,
 
   "languageserver": {
+        "coc-clangd": {
+            "command": "clangd",
+            "filetypes": ["c", "cpp", "objc", "objcpp"],
+            "rootPatterns":[
+              "compile_commands.json",
+              ".git",
+              ".root"       
+            ],
+            "args":[
+              "--compile-commands-dir=build",
+              "--compile_args_from=filesystem",
+              "--all-scopes-completion",
+              "--background-index",
+              "--clang-tidy",
+              "--cross-file-rename",
+              "--completion-parse=always",
+              "--completion-style=detailed",
+              "--function-arg-placeholders",
+              "--header-insertion-decorators",
+              "--query-driver=/usr/bin/**/clang-*",
+              "--header-insertion=never",
+              "--limit-results=0",
+              "-j=4",
+              "--pch-storage=memory"
+            ]
+          }
   }
+
 }
