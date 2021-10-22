@@ -100,10 +100,9 @@ Plug 'vhdirk/vim-cmake'
 Plug 'Rykka/riv.vim'  "reStructuredText 
 "Plug 'glepnir/spaceline.vim'
 Plug 'Yggdroot/indentLine'
-Plug 'scrooloose/nerdcommenter'
 Plug 'jlanzarotta/bufexplorer'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 Plug 'crusoexia/vim-monokai'
 Plug 'luochen1990/rainbow'
 Plug 'itchyny/lightline.vim'
@@ -114,13 +113,14 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'ajh17/vimcompletesme'
 
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
+"Plug 'Shougo/deoplete.nvim'
+"Plug 'roxma/nvim-yarp'
+"Plug 'roxma/vim-hug-neovim-rpc'
 "Plug 'Shougo/neocomplcache.vim' 
 Plug 'skywind3000/asyncrun.vim'
-Plug  'Shougo/echodoc.vim' 
+Plug 'Shougo/echodoc.vim' 
 Plug 'Yggdroot/LeaderF'
+Plug 'babaybus/DoxygenToolkit.vim' 
 
 call plug#end()
 
@@ -128,7 +128,7 @@ call plug#end()
 source ~/.vim/setup/keymap.vim
 source ~/.vim/setup/asyncrun.vim
 source ~/.vim/setup/leaderf.vim
-"source ~/.vim/setup/coc-nvim.vim
+source ~/.vim/setup/coc-nvim.vim
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -155,27 +155,24 @@ let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"ALE setting
-
+" ale
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ale_linters_explicit = 1
-let g:ale_completion_delay = 500
-let g:ale_echo_delay = 20
-let g:ale_lint_delay = 500
-let g:ale_echo_msg_format = '[%linter%] %code: %%s'
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_insert_leave = 1
+"keep the sign gutter open
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+ 
 let g:airline#extensions#ale#enabled = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-J> <Plug>(ale_next_wrap)
 
-let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
-let g:ale_c_cppcheck_options = ''
-let g:ale_cpp_cppcheck_options = ''
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Deoplete setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Neocomplcache setting
@@ -278,6 +275,13 @@ let Tlist_Exit_OnlyWindow=1 "当taglist是最后一个分割窗口时，自动�
 let Tlist_Process_File_Always=1 "实时更新tags   
 let Tlist_Inc_Winwidth=0
 let Tlist_Auto_Open=0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tagbar setting 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tagbar_left = 1
+let g:tagbar_width = max([25, winwidth(0) / 6])
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -407,4 +411,7 @@ let g:clang_format#style_options = {
 
 "autocmd FileType c,cpp,objc ClangFormatAutoEnable
 
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" DoxygenToolkit
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:DoxygenToolkit_authorName="guojun.huang"
