@@ -16,12 +16,13 @@ set cindent
 set noswapfile          "禁止产生swp文件
 
 call plug#begin('~/.vim/plugged')               
+
 "Plug 'ervandew/supertab'
 Plug 'vim-scripts/minibufexpl.vim' 
-Plug 'vim-scripts/taglist.vim' 
+"Plug 'vim-scripts/taglist.vim' 
 Plug 'vim-scripts/a.vim' 
-Plug 'majutsushi/tagbar' "taglist的增强版，查看标签，依赖于ctags
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'majutsushi/tagbar' 
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'dense-analysis/ale'
 Plug 'crusoexia/vim-monokai'
 Plug 'preservim/nerdtree'
@@ -32,7 +33,7 @@ Plug 'bfrg/vim-cuda-syntax'
 Plug 'tikhomirov/vim-glsl'
 Plug 'crucerucalin/qml.vim'
 Plug 'vhdirk/vim-cmake'
-Plug 'Rykka/riv.vim'        "reStructuredText 
+Plug 'Rykka/riv.vim' "reStructuredText 
 Plug 'ludovicchabant/vim-gutentags' 
 Plug 'mhinz/vim-signify'
 Plug 'skywind3000/asyncrun.vim'
@@ -51,7 +52,7 @@ source ~/.vim/setup/coc-nvim.vim
 "=============================================================================
 " vim-monokai setting
 "=============================================================================
-"colo monokai
+" colo monokai
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "vim-gutentags setting
@@ -118,11 +119,6 @@ map <F8> :cp<CR>
 map <F9> :cn<CR>    
 "以上的映射是使上面的快捷键在插入模式下也能用  
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"signify setting 修改比较
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set signcolumn=no
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
