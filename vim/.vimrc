@@ -85,6 +85,7 @@ Plug 'Lokaltog/vim-easymotion' "快速跳转，按两下leader键和f组合
 "Plug 'vim-scripts/ShowTrailingWhitespace.git' "高亮显示行尾的多余空白字符
 Plug 'vim-scripts/indentpython.vim'
 Plug 'vim-scripts/Solarized' "主题方案
+Plug 'vim-scripts/vim-auto-save'
 Plug 'nathanaelkane/vim-indent-guides' "缩进对齐显示
 Plug 'davidhalter/jedi-vim' "python 补全，不依赖于tags,但比较慢，可以使用indexer替换，但不能跳转项目外
 Plug 'ConradIrwin/vim-bracketed-paste' " 使用bracketed-paste mode，粘贴代码时避免格式化
@@ -153,6 +154,13 @@ let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Auto Save
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:auto_save = 1 
+let g:auto_save_in_insert_mode = 0
+"let g:auto_save_events = ["InsertLeave", "TextChanged"]
+let g:auto_save_events = ["InsertLeave"]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ale
