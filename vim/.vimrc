@@ -30,9 +30,9 @@ filetype plugin on
 
 "set background=dark 
 
-set autowrite        " 自动把内容写回文件    
-set autoindent        " 设置自动对齐(缩进)：即每行的缩进值与上一行相等；
-set smartindent        " 智能对齐方式   
+set autowriteall        " 自动把内容写回文件    
+set autoindent          " 设置自动对齐(缩进)：即每行的缩进值与上一行相等；
+set smartindent         " 智能对齐方式   
 set tabstop=4           " 设置制表符(tab键)的宽度   
 set softtabstop=4       " 设置软制表符的宽度
 set shiftwidth=4        " (自动) 缩进使用的4个空格  
@@ -77,6 +77,7 @@ Plug 'peterhoeg/vim-qml'
 Plug 'Lokaltog/vim-powerline' "status 美化
 Plug 'octol/vim-cpp-enhanced-highlight' "对c++语法高亮增强
 Plug 'kshenoy/vim-signature' "书签可视化的插件
+Plug 'vim-scripts/taglist.vim' 
 Plug 'majutsushi/tagbar' "taglist的增强版，查看标签，依赖于ctags
 Plug 'scrooloose/nerdcommenter' "多行注释，leader键+cc生成, leader+cu删除注释
 Plug 'kien/ctrlp.vim' "搜索历史打开文件，在命令行模式下按ctrl+p触发
@@ -84,6 +85,7 @@ Plug 'vim-scripts/grep.vim' "在命令行模式使用grep命令，:Grep
 Plug 'Lokaltog/vim-easymotion' "快速跳转，按两下leader键和f组合
 "Plug 'vim-scripts/ShowTrailingWhitespace.git' "高亮显示行尾的多余空白字符
 Plug 'vim-scripts/indentpython.vim'
+Plug 'vim-scripts/vim-auto-save'
 Plug 'vim-scripts/Solarized' "主题方案
 Plug 'nathanaelkane/vim-indent-guides' "缩进对齐显示
 Plug 'davidhalter/jedi-vim' "python 补全，不依赖于tags,但比较慢，可以使用indexer替换，但不能跳转项目外
@@ -97,6 +99,7 @@ Plug 'bfrg/vim-cuda-syntax'
 Plug 'tikhomirov/vim-glsl'
 Plug 'crucerucalin/qml.vim'
 Plug 'vhdirk/vim-cmake'
+Plug 'rhysd/vim-clang-format'
 Plug 'Rykka/riv.vim'  "reStructuredText 
 "Plug 'glepnir/spaceline.vim'
 Plug 'Yggdroot/indentLine'
@@ -153,6 +156,13 @@ let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Auto Save
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:auto_save = 1 
+let g:auto_save_in_insert_mode = 0
+"let g:auto_save_events = ["InsertLeave", "TextChanged"]
+let g:auto_save_events = ["InsertLeave"]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "ALE setting
@@ -278,6 +288,12 @@ let Tlist_Exit_OnlyWindow=1 "当taglist是最后一个分割窗口时，自动�
 let Tlist_Process_File_Always=1 "实时更新tags   
 let Tlist_Inc_Winwidth=0
 let Tlist_Auto_Open=0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tagbar setting 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tagbar_left = 1
+let g:tagbar_width = max([25, winwidth(0) / 6])
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
