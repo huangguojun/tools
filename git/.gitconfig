@@ -7,5 +7,5 @@
 	tool = vimdiff
 [difftool]
 	prompt = No
-[url "https://hub.fastgit.org"]
-	insteadOf = https://github.com
+[pull]
+	rebase = true
