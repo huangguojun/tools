@@ -9,3 +9,5 @@
 	prompt = No
 [pull]
 	rebase = true
+[commit]
+	template = /home/hgj/.git-commit-template
