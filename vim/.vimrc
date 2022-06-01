@@ -89,7 +89,7 @@ Plug 'vim-scripts/vim-auto-save'
 Plug 'vim-scripts/Solarized' "主题方案
 Plug 'vim-scripts/vim-auto-save'
 Plug 'nathanaelkane/vim-indent-guides' "缩进对齐显示
-Plug 'davidhalter/jedi-vim' "python 补全，不依赖于tags,但比较慢，可以使用indexer替换，但不能跳转项目外
+Plug 'davidhalter/jedi-vim' "python 补全
 Plug 'ConradIrwin/vim-bracketed-paste' " 使用bracketed-paste mode，粘贴代码时避免格式化
 Plug 'vim-scripts/Markdown'
 Plug 'vim-scripts/cpp.vim'
@@ -106,7 +106,7 @@ Plug 'Rykka/riv.vim'  "reStructuredText
 Plug 'Yggdroot/indentLine'
 Plug 'jlanzarotta/bufexplorer'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 Plug 'crusoexia/vim-monokai'
 Plug 'luochen1990/rainbow'
 Plug 'itchyny/lightline.vim'
@@ -299,7 +299,7 @@ let g:tagbar_width = max([25, winwidth(0) / 6])
 "set foldmethod=syntax " 用语法高亮来定义折叠
 set foldmethod=indent " 通过缩进定义折叠
 set foldlevel=100 " 启动vim时不要自动折叠代码    
-set foldcolumn=5  "设置折叠栏宽度
+set foldcolumn=1  "设置折叠栏宽度
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
