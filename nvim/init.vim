@@ -42,6 +42,8 @@ Plug 'Yggdroot/LeaderF'
 Plug 'rhysd/vim-clang-format'
 Plug 'babaybus/DoxygenToolkit.vim' 
 Plug 'voldikss/vim-floaterm'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -250,10 +252,11 @@ let g:DoxygenToolkit_authorName="guojun.huang"
 " Floaterm
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:floaterm_keymap_toggle = '<F12>'
-
 let g:floaterm_width = 0.7
 let g:floaterm_height = 0.7
+
 " Set floaterm window's background to black
 hi Floaterm guibg=black
 " Set floating window border line color to cyan, and background to orange
 hi FloatermBorder guibg=orange guifg=cyan
+

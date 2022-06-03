@@ -17,6 +17,8 @@ sudo apt-get install libboost-all-dev
 sudo apt-get install sdcv
 #sudo apt-get install ckermit 
 sudo apt-get install curl
+sudo apt-get install fzf
+sudo apt-get install ranger
 
 # doc
 sudo apt-get install python3-sphinx pandoc
