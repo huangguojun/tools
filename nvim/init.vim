@@ -27,13 +27,13 @@ Plug 'majutsushi/tagbar'
 Plug 'crusoexia/vim-monokai'
 Plug 'preservim/nerdtree'
 Plug 'peterhoeg/vim-qml'
-Plug 'octol/vim-cpp-enhanced-highlight' "对c++语法高亮增强
+Plug 'octol/vim-cpp-enhanced-highlight' 
 Plug 'brgmnn/vim-opencl'
 Plug 'bfrg/vim-cuda-syntax' 
 Plug 'tikhomirov/vim-glsl'
 Plug 'crucerucalin/qml.vim'
 Plug 'vhdirk/vim-cmake'
-Plug 'Rykka/riv.vim' "reStructuredText 
+Plug 'Rykka/riv.vim'    "reStructuredText 
 Plug 'ludovicchabant/vim-gutentags' 
 Plug 'mhinz/vim-signify'
 Plug 'skywind3000/asyncrun.vim'
@@ -41,6 +41,7 @@ Plug 'Shougo/echodoc.vim'
 Plug 'Yggdroot/LeaderF'
 Plug 'rhysd/vim-clang-format'
 Plug 'babaybus/DoxygenToolkit.vim' 
+Plug 'voldikss/vim-floaterm'
 
 call plug#end()
 
@@ -80,7 +81,7 @@ let Tlist_Ctags_Cmd='ctags'   "因为我们放在环境变量里，所以可以�
 let Tlist_Use_Right_Window=0  "让窗口显示在右边，0的话就是显示在左边 
 let Tlist_Show_One_File=0     "让taglist可以同时展示多个文件的函数列表
 let Tlist_File_Fold_Auto_Close=1 "非当前文件，函数列表折叠隐藏  
-let Tlist_Exit_OnlyWindow=1 "当taglist是最后一个分割窗口时，自动推出vim    "是否一直处理tags.1:处理;0:不处理   
+let Tlist_Exit_OnlyWindow=1      "当taglist是最后一个分割窗口时，自动推出vim    "是否一直处理tags.1:处理;0:不处理   
 let Tlist_Process_File_Always=1 "实时更新tags   
 let Tlist_Inc_Winwidth=0
 let Tlist_Auto_Open=0
@@ -103,7 +104,7 @@ set signcolumn=no
 "set foldmethod=syntax " 用语法高亮来定义折叠
 set foldmethod=indent " 通过缩进定义折叠
 set foldlevel=100 " 启动vim时不要自动折叠代码    
-set foldcolumn=3  "设置折叠栏宽度
+set foldcolumn=0  "设置折叠栏宽度
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -244,3 +245,15 @@ let g:clang_format#style_options = {
 " DoxygenToolkit
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:DoxygenToolkit_authorName="guojun.huang"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Floaterm
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:floaterm_keymap_toggle = '<F12>'
+
+let g:floaterm_width = 0.7
+let g:floaterm_height = 0.7
+" Set floaterm window's background to black
+hi Floaterm guibg=black
+" Set floating window border line color to cyan, and background to orange
+hi FloatermBorder guibg=orange guifg=cyan

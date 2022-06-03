@@ -18,7 +18,7 @@ sudo apt-get install sdcv
 #sudo apt-get install ckermit 
 sudo apt-get install curl
 
-#doc
+# doc
 sudo apt-get install python3-sphinx pandoc
 sudo pip3 install recommonmark
 sudo pip3 install sphinx-markdown-tables
@@ -28,3 +28,10 @@ sudo pip3 install rst2pdf
 sudo apt-get install zsh
 chsh -s /bin/zsh
 
+# vim 
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# nvim
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
