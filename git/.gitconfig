@@ -9,5 +9,7 @@
 	prompt = No
 [pull]
 	rebase = true
+[rebase]
+	autoStash = true
 [commit]
 	template = /home/hgj/.git-commit-template
