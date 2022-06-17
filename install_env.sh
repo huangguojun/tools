@@ -6,7 +6,7 @@ sudo apt-get install qtmultimedia5-dev qtscript5-dev libqt5xmlpatterns5-dev
 sudo apt-get install qml-module-qtquick-controls2
 
 sudo apt-get install cmake cmake-curses-gui extra-cmake-modules
-sudo apt-get install vim git subversion
+sudo apt-get install vim git subversion git-extras
 sudo apt-get install tmux  tmuxinator 
 sudo apt-get install exuberant-ctags
 sudo apt-get install clang-format
