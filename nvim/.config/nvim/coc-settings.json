@@ -1,0 +1,32 @@
+{
+  "clangd.disableDiagnostics": true,
+
+  "languageserver": {
+        "coc-clangd": {
+            "command": "clangd",
+            "filetypes": ["c", "cpp", "objc", "objcpp"],
+            "rootPatterns":[
+              ".git",
+              ".root"       
+            ],
+            "args":[
+              "--compile-commands-dir=build",
+              "--compile_args_from=filesystem",
+              "--all-scopes-completion",
+              "--background-index",
+              "--clang-tidy",
+              "--cross-file-rename",
+              "--completion-parse=always",
+              "--completion-style=detailed",
+              "--function-arg-placeholders",
+              "--header-insertion-decorators",
+              "--query-driver=/usr/bin/**/clang-*",
+              "--header-insertion=never",
+              "--limit-results=0",
+              "-j=4",
+              "--pch-storage=memory"
+            ]
+          }
+  }
+
+}
