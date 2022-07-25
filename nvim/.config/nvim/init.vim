@@ -47,6 +47,11 @@ Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
+source ~/.vim/setup/keymap.vim
+source ~/.vim/setup/asyncrun.vim
+source ~/.vim/setup/leaderf.vim
+source ~/.vim/setup/coc-nvim.vim
+
 
 "=============================================================================
 " vim-monokai setting
