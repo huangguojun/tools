@@ -11,11 +11,11 @@ set nocompatible        " 不要使用vi的键盘模式，而是vim自己的
 set syntax=on           " 语法高亮
 set noeb                " 去掉输入错误的提示声音
 set confirm             " 在处理未保存或只读文件的时候，弹出确认
-set autoindent          " 自动缩进
+set autoindent          " 自动`:w缩进
 set cindent
-set noswapfile          "禁止产生swp文件
+set noswapfile          " 禁止产生swp文件
 
-call plug#begin('~/.vim/plugged')               
+call plug#begin('~/.config/nvim/plugged')               
 
 "Plug 'ervandew/supertab'
 Plug 'vim-scripts/minibufexpl.vim' 
@@ -47,19 +47,19 @@ Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
-source ~/.vim/setup/keymap.vim
-source ~/.vim/setup/asyncrun.vim
-source ~/.vim/setup/leaderf.vim
-source ~/.vim/setup/coc-nvim.vim
+source ~/.config/nvim/setup/keymap.vim
+source ~/.config/nvim/setup/asyncrun.vim
+source ~/.config/nvim/setup/leaderf.vim
+source ~/.config/nvim/setup/coc-nvim.vim
 
 
 "=============================================================================
-" vim-monokai setting
+" Vim-monokai setting
 "=============================================================================
 " colo monokai
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"vim-gutentags setting
+" Vim-gutentags setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
@@ -96,13 +96,13 @@ let g:tagbar_left = 1
 let g:tagbar_width = max([25, winwidth(0) / 9])
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"signify setting 修改比较
+" Signify setting 修改比较
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set signcolumn=no
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Fold setting
+" Fold setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "set foldmethod=syntax " 用语法高亮来定义折叠
 set foldmethod=indent " 通过缩进定义折叠
@@ -111,7 +111,7 @@ set foldcolumn=0  "设置折叠栏宽度
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"QuickFix setting 
+" QuickFix setting 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 按下F5，执行make 
 map <f5> :wa<CR>:AsyncRun make -C build -j8 <CR>
@@ -124,26 +124,6 @@ map <F9> :cn<CR>
 "以上的映射是使上面的快捷键在插入模式下也能用  
 
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"LeaderF setting 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:Lf_ShortcutF = '<c-p>'
-let g:Lf_ShortcutB = '<m-n>'
-noremap <c-n> :LeaderfMru<cr>
-noremap <m-p> :LeaderfFunction!<cr>
-noremap <m-n> :LeaderfBuffer<cr>
-noremap <m-m> :LeaderfTag<cr>
-let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
-let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
-let g:Lf_WorkingDirectoryMode = 'Ac'
-let g:Lf_WindowHeight = 0.30
-let g:Lf_CacheDirectory = expand('~/.vim/cache')
-let g:Lf_ShowRelativePath = 0
-let g:Lf_HideHelp = 1
-let g:Lf_StlColorscheme = 'powerline'
-let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " *.cpp/*.h 快速切换
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -151,7 +131,7 @@ nnoremap <silent> <F12> :A<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"MiniBufExplorer
+" MiniBufExplorer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:miniBufExplMapWindowNavVim=1
 let g:miniBufExplMapWindowNavArrows=1
@@ -177,7 +157,7 @@ let g:C_UseTool_doxygen = 'yes'
 let NERDTreeWinPos="right"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"ALE setting
+" ALE setting
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "keep the sign gutter open
@@ -197,7 +177,7 @@ nmap <silent> <C-J> <Plug>(ale_next_wrap)
 "let g:deoplete#enable_at_startup = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Neocomplcache setting
+" Neocomplcache setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:neocomplcache_enable_at_startup = 1
 
