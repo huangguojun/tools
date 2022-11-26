@@ -15,7 +15,7 @@ set autoindent          " 自动`:w缩进
 set cindent
 set noswapfile          " 禁止产生swp文件
 
-call plug#begin('~/.config/nvim/plugged')               
+call plug#begin('~/.vim/plugged')               
 
 Plug 'vim-scripts/minibufexpl.vim' 
 Plug 'vim-scripts/a.vim' 
@@ -24,12 +24,12 @@ Plug 'majutsushi/tagbar'
 "Plug 'dense-analysis/ale'
 Plug 'crusoexia/vim-monokai'
 Plug 'preservim/nerdtree'
-Plug 'peterhoeg/vim-qml'
+"Plug 'peterhoeg/vim-qml'
 Plug 'octol/vim-cpp-enhanced-highlight' 
-Plug 'brgmnn/vim-opencl'
-Plug 'bfrg/vim-cuda-syntax' 
-Plug 'tikhomirov/vim-glsl'
-Plug 'crucerucalin/qml.vim'
+"Plug 'brgmnn/vim-opencl'
+"Plug 'bfrg/vim-cuda-syntax' 
+"Plug 'tikhomirov/vim-glsl'
+"Plug 'crucerucalin/qml.vim'
 Plug 'vhdirk/vim-cmake'
 Plug 'Rykka/riv.vim'    "reStructuredText 
 Plug 'ludovicchabant/vim-gutentags' 
@@ -37,20 +37,19 @@ Plug 'mhinz/vim-signify'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'Shougo/echodoc.vim' 
 Plug 'Yggdroot/LeaderF'
-Plug 'babaybus/DoxygenToolkit.vim' 
+"Plug 'babaybus/DoxygenToolkit.vim' 
 Plug 'voldikss/vim-floaterm'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf.vim'
 "Plug 'hiberabyss/NeovimGdb'
 
 call plug#end()
 
-source ~/.config/nvim/setup/keymap.vim
-source ~/.config/nvim/setup/asyncrun.vim
-source ~/.config/nvim/setup/leaderf.vim
-source ~/.config/nvim/setup/coc-nvim.vim
-source ~/.config/nvim/setup/vim-gutentag.vim
-source ~/.config/nvim/setup/clang-format.vim
+source ~/.vim/setup/keymap.vim
+source ~/.vim/setup/asyncrun.vim
+source ~/.vim/setup/coc-nvim.vim
+source ~/.vim/setup/vim-gutentag.vim
+source ~/.vim/setup/clang-format.vim
 
 
 "=============================================================================
@@ -124,6 +123,27 @@ let g:C_UseTool_doxygen = 'yes'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " autocmd VimEnter * NERDTree
 let NERDTreeWinPos="right"
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"LeaderF setting 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:Lf_ShortcutF = '<c-p>'
+let g:Lf_ShortcutB = '<m-n>'
+noremap <c-n> :LeaderfMru<cr>
+noremap <m-p> :LeaderfFunction!<cr>
+noremap <m-n> :LeaderfBuffer<cr>
+noremap <m-m> :LeaderfTag<cr>
+let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
+let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
+let g:Lf_WorkingDirectoryMode = 'Ac'
+let g:Lf_WindowHeight = 0.30
+let g:Lf_CacheDirectory = expand('~/.vim/cache')
+let g:Lf_ShowRelativePath = 0
+let g:Lf_HideHelp = 1
+let g:Lf_StlColorscheme = 'powerline'
+let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ALE setting
