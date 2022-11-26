@@ -17,9 +17,7 @@ set noswapfile          " 禁止产生swp文件
 
 call plug#begin('~/.config/nvim/plugged')               
 
-"Plug 'ervandew/supertab'
 Plug 'vim-scripts/minibufexpl.vim' 
-"Plug 'vim-scripts/taglist.vim' 
 Plug 'vim-scripts/a.vim' 
 Plug 'majutsushi/tagbar' 
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -39,11 +37,11 @@ Plug 'mhinz/vim-signify'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'Shougo/echodoc.vim' 
 Plug 'Yggdroot/LeaderF'
-Plug 'rhysd/vim-clang-format'
 Plug 'babaybus/DoxygenToolkit.vim' 
 Plug 'voldikss/vim-floaterm'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+"Plug 'hiberabyss/NeovimGdb'
 
 call plug#end()
 
@@ -51,43 +49,14 @@ source ~/.config/nvim/setup/keymap.vim
 source ~/.config/nvim/setup/asyncrun.vim
 source ~/.config/nvim/setup/leaderf.vim
 source ~/.config/nvim/setup/coc-nvim.vim
+source ~/.config/nvim/setup/vim-gutentag.vim
+source ~/.config/nvim/setup/clang-format.vim
 
 
 "=============================================================================
 " Vim-monokai setting
 "=============================================================================
 " colo monokai
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vim-gutentags setting
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
-let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
-" 所生成的数据文件的名称 "
-let g:gutentags_ctags_tagfile = '.tags'
-" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录 "
-let s:vim_tags = expand('~/.cache/tags')
-let g:gutentags_cache_dir = s:vim_tags
-" 检测 ~/.cache/tags 不存在就新建 "
-if !isdirectory(s:vim_tags)
-    silent! call mkdir(s:vim_tags, 'p')
-endif
-" 配置 ctags 的参数 "
-let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
-let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Taglist setting 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let Tlist_Ctags_Cmd='ctags'   "因为我们放在环境变量里，所以可以直接执行    
-let Tlist_Use_Right_Window=0  "让窗口显示在右边，0的话就是显示在左边 
-let Tlist_Show_One_File=0     "让taglist可以同时展示多个文件的函数列表
-let Tlist_File_Fold_Auto_Close=1 "非当前文件，函数列表折叠隐藏  
-let Tlist_Exit_OnlyWindow=1      "当taglist是最后一个分割窗口时，自动推出vim    "是否一直处理tags.1:处理;0:不处理   
-let Tlist_Process_File_Always=1 "实时更新tags   
-let Tlist_Inc_Winwidth=0
-let Tlist_Auto_Open=0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tagbar setting 
@@ -116,18 +85,18 @@ set foldcolumn=0  "设置折叠栏宽度
 " 按下F5，执行make 
 map <f5> :wa<CR>:AsyncRun make -C build -j8 <CR>
 " 按下F6，执行make clean 
-map <F6> :wa<CR>:AsyncRun make clean -C build -j8 <CR>
+"map <F6> :wa<CR>:AsyncRun make clean -C build -j8 <CR>
 "按下F8，光标移到上一个错误所在的行   
-map <F8> :cp<CR>    
+"map <F8> :cp<CR>    
 "按下F9，光标移到下一个错误所在的行  
-map <F9> :cn<CR>    
+"map <F9> :cn<CR>    
 "以上的映射是使上面的快捷键在插入模式下也能用  
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " *.cpp/*.h 快速切换
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <F12> :A<CR>
+"nnoremap <silent> <F12> :A<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -181,48 +150,6 @@ nmap <silent> <C-J> <Plug>(ale_next_wrap)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:neocomplcache_enable_at_startup = 1
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Clang_Format
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:clang_format#style_options = {
-               \  "BasedOnStyle" : "WebKit" ,
-               \  "PointerAlignment" : "Right",
-               \  "IndentWidth" : 4 ,
-               \  "MaxEmptyLinesToKeep" : 1 ,
-               \  "ObjCSpaceAfterProperty" : "true" ,
-               \  "ObjCBlockIndentWidth" : 4 ,
-               \  "AllowShortFunctionsOnASingleLine" : "true",
-               \  "AllowShortIfStatementsOnASingleLine" : "true",
-               \  "AlignTrailingComments" : "true",
-               \  "SpacesInSquareBrackets" : "true",
-               \  "SpacesInParentheses" : "true",
-               \  "AlignConsecutiveDeclarations" : "true",
-               \  "AlignConsecutiveAssignments" : "true",
-               \  "AccessModifierOffset" : -4,
-               \  "AlwaysBreakTemplateDeclarations" : "true",
-               \  "SpaceBeforeAssignmentOperators" : "true",
-               \  "SpacesInContainerLiterals" : "true",
-               \  "IndentWrappedFunctionNames" : "true",
-               \  "KeepEmptyLinesAtTheStartOfBlocks" : "true",
-               \  "BreakConstructorInitializersBeforeComma" : "true",
-               \  "AllowAllParametersOfDeclarationOnNextLine" : "true",
-               \  "SpaceAfterCStyleCast" : "true",
-               \  "Standard" : "C++11",
-               \  "TabWidth": 4,
-               \  "UseTab": "Never"}
-
-" map to <Leader>cf in C++ code
-" autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-" autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
-
-" if you install vim-operator-user
-" autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
-
-" Toggle auto formatting:
-" nmap <Leader>C :ClangFormatAutoToggle<CR>
-
-"autocmd FileType c,cpp,objc ClangFormatAutoEnable
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " DoxygenToolkit

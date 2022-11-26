@@ -17,7 +17,7 @@ let g:Lf_ShortcutB = "<leader>fb"
 " noremap gi :Leaderf bufTag --fuzzy --popup<cr>
 " rg should take references of ripgrep instead of Leaderfc
 " nnoremap <space>fg  :Leaderf rg<space>
-noremap <space>fb :Leaderf buffer<cr>
+noremap  <space>fb :Leaderf buffer<cr>
 " find-file
 nnoremap <space>ff :LeaderfFile <cr>
 " Symbols of workspace
